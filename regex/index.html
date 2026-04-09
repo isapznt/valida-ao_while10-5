@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Validação com REGEX</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      outline: none;
+      width: 200px;
+    }
+
+    input.valido {
+      border-color: green;
+    }
+
+    input.invalido {
+      border-color: red;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 10px 15px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #mensagem {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Validação de Número</h2>
+
+    <input type="text" id="valor" placeholder="Digite um número">
+    <br>
+    <button onclick="validar()">Validar</button>
+
+    <p id="mensagem"></p>
+  </div>
+
+  <script>
+    function validar() {
+      const input = document.getElementById("valor");
+      const mensagem = document.getElementById("mensagem");
+
+      const regex = /^\d+([.,]\d+)?$/;
+
+      if (regex.test(input.value)) {
+        mensagem.textContent = "Valor válido";
+        mensagem.style.color = "green";
+
+        input.classList.remove("invalido");
+        input.classList.add("valido");
+      } else {
+        mensagem.textContent = "Valor inválido";
+        mensagem.style.color = "red";
+
+        input.classList.remove("valido");
+        input.classList.add("invalido");
+      }
+    }
+  </script>
+
+</body>
+</html>
+
